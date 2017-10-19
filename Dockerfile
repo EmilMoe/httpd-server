@@ -13,7 +13,7 @@ RUN apt-get install -y apache2 php7.0 curl php7.0-cli php7.0-mysql php7.0-curl g
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
-RUN adduser local-user --no-create-home -p "" --group www-data
+RUN adduser local-user --no-create-home --password "" --group www-data
 
 RUN sed -i -e 's/\var\/www\/html/\var\/www/g' /etc/apache2/apache2.conf
 
