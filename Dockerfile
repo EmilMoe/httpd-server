@@ -29,6 +29,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 VOLUME ["/var/www"]
 
+RUN php artisan migrate --seed
+
 WORKDIR /var/www
 
 EXPOSE 80
