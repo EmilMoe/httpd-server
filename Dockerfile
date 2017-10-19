@@ -18,7 +18,7 @@ RUN adduser local --no-create-home --disabled-password
 RUN a2enmod rewrite
 
 RUN mkdir -p /var/www/html
-RUN rm -r /var/www/html
+RUN rm /var/www/html/index.html
 RUN chown local:www-data /var/www/html
 
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
