@@ -35,4 +35,4 @@ WORKDIR /var/www/html
 
 EXPOSE 80
 
-ENTRYPOINT /usr/sbin/apache2ctl -D FOREGROUND
+ENTRYPOINT /usr/sbin/apache2ctl -D FOREGROUND 
