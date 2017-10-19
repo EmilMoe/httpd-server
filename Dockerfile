@@ -13,7 +13,7 @@ RUN apt-get install -y apache2 php7.0 curl php7.0-cli php7.0-mysql php7.0-curl g
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
-RUN adduser local --no-create-home --uid 1000 -p "" -G www-data
+RUN adduser local-user --no-create-home -p "" --group www-data
 
 RUN sed -i -e 's/\var\/www\/html/\var\/www/g' /etc/apache2/apache2.conf
 
@@ -21,7 +21,7 @@ RUN a2enmod rewrite
 
 RUN mkdir -p /var/www
 RUN rm -r /var/www/html
-RUN chown 1000:www-data www
+RUN chown local-user:www-data www
 
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
 
