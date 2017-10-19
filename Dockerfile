@@ -29,6 +29,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 VOLUME ["/var/www"]
 
+WORKDIR /var/www
+
 EXPOSE 80
 
 ENTRYPOINT /usr/sbin/apache2ctl -D FOREGROUND
