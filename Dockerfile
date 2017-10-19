@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /tmp
 
+RUN adduser --no-create-home --uid 1000 -p ""
+
 RUN apt-get update
 RUN apt-get upgrade -y
 
@@ -17,8 +19,10 @@ RUN sed -i -e 's/\var\/www\/html/\var\/www/g' /etc/apache2/apache2.conf
 
 RUN a2enmod rewrite
 
-RUN mkdir -p /var/www/html
+RUN mkdir -p /var/www
 RUN rm -r /var/www/html
+RUN chown 1000:www-data www
+
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
