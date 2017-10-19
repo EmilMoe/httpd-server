@@ -15,7 +15,7 @@ RUN apt-get install -y nodejs
 
 RUN adduser local --no-create-home --disabled-password
 
-RUN sed -i -e 's/\var\/www\/html/\var\/www/g' /etc/apache2/apache2.conf
+RUN sed -i -e 's/\/var\/www\/html/\/var\/www/g' /etc/apache2/apache2.conf
 
 RUN a2enmod rewrite
 
