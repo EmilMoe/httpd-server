@@ -21,7 +21,7 @@ RUN a2enmod rewrite
 
 RUN mkdir -p /var/www
 RUN rm -r /var/www/html
-RUN chown local:www-data www
+RUN chown local:www-data /var/www
 
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
 
