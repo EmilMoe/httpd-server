@@ -15,13 +15,11 @@ RUN apt-get install -y nodejs
 
 RUN adduser local --no-create-home --disabled-password
 
-RUN sed -i -e 's/\/var\/www\/html/\/var\/www/g' /etc/apache2/apache2.conf
-
 RUN a2enmod rewrite
 
-RUN mkdir -p /var/www
+RUN mkdir -p /var/www/html
 RUN rm -r /var/www/html
-RUN chown local:www-data /var/www
+RUN chown local:www-data /var/www/html
 
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
 
@@ -31,9 +29,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php -r "unlink('composer-setup.php');" && \
     mv composer.phar /usr/local/bin/composer
 
-VOLUME ["/var/www"]
+VOLUME ["/var/www/html"]
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 EXPOSE 80
 
