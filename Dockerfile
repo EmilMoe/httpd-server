@@ -15,7 +15,7 @@ RUN apt-get install -y nodejs
 
 RUN adduser local --no-create-home --disabled-password
 
-RUN echo "local   ALL=NOPASSWD: /usr/sbin/apache2ctl -D FOREGROUND" >> /etc/sudoers
+RUN echo "local ALL = NOPASSWD: ALL" >> /etc/sudoers
 
 RUN a2enmod rewrite
 
