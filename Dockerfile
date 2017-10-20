@@ -13,7 +13,7 @@ RUN apt-get install -y apache2 php7.0 curl php7.0-cli php7.0-mysql php7.0-curl g
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
-RUN adduser local --no-create-home --disabled-password
+RUN adduser local --disabled-password
 
 RUN echo "local ALL = NOPASSWD: ALL" >> /etc/sudoers
 
