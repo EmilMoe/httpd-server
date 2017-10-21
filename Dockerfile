@@ -36,9 +36,9 @@ VOLUME ["/var/www/html"]
 WORKDIR /var/www/html
 
 USER local
-RUN composer -n install
-RUN npm install --no-optional
-RUN php artisan migrate --seed
+RUN [ -f composer.json ] && composer -n install
+RUN [ -f package.json ] && npm install --no-optional
+RUN [ -f artisan ] && php artisan migrate --seed
 USER root
 
 EXPOSE 80
