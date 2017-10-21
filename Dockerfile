@@ -35,12 +35,6 @@ VOLUME ["/var/www/html"]
 
 WORKDIR /var/www/html
 
-USER local
-RUN [ -f composer.json ] && composer -n install || echo ""
-RUN [ -f package.json ] && npm install --no-optional || echo ""
-RUN [ -f artisan ] && php artisan migrate --seed || echo ""
-USER root
-
 EXPOSE 80
 
 ENTRYPOINT sudo /usr/sbin/apache2ctl -D FOREGROUND 
