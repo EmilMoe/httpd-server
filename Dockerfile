@@ -35,9 +35,9 @@ VOLUME ["/var/www/html"]
 
 WORKDIR /var/www/html
 
-RUN su local && cd /var/www/html && composer install
-RUN su local && cd /var/www/html && npm install --no-optional
-RUN su local && cd /var/www/html php artisan migrate --seed
+RUN su local -c composer install
+RUN su local -c npm install --no-optional
+RUN su local -c php artisan migrate --seed
 
 EXPOSE 80
 
