@@ -1,8 +1,8 @@
-FROM amd64/debian:latest
+FROM amd64/ubuntu:latest
 
 MAINTAINER Emil Moe
 
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
 
