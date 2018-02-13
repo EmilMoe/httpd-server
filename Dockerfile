@@ -8,7 +8,7 @@ WORKDIR /tmp
 
 RUN apt-get -qq update && apt-get -qq -y upgrade
 RUN apt-get install -qq -y software-properties-common python-software-properties
-RUN add-apt-repository -qq -y ppa:ondrej/php
+RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get -qq update
 
 RUN apt-get -qq -y install apache2 php7.2 curl php7.2-cli php7.2-mysql php7.2-mcrypt php7.2-curl git gnupg php7.2-mbstring php7.2-xml unzip sudo curl php7.2-zip
