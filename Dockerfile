@@ -9,7 +9,7 @@ WORKDIR /tmp
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y apache2 php7.1 curl php7.1-cli php7.1-mysql php7.1-mcrypt php7.1-curl git gnupg php7.1-mbstring php7.1-xml unzip sudo curl php7.1-zip
+RUN apt-get install -y apache2 php7.2 curl php7.2-cli php7.2-mysql php7.2-mcrypt php7.2-curl git gnupg php7.2-mbstring php7.2-xml unzip sudo curl php7.2-zip
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs 
 
