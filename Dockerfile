@@ -6,13 +6,12 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
 
-# RUN apt-get update
-# RUN apt-get upgrade -y
+RUN add-apt-repository ppa:ondrej/php
 RUN apt-get -qq update && apt-get -qq -y upgrade
 
-RUN apt-get -qq update && apt-get -qq -y install apache2 php7.0 curl php7.0-cli php7.0-mysql php7.0-mcrypt php7.0-curl git gnupg php7.0-mbstring php7.0-xml unzip sudo curl php7.0-zip
+RUN apt-get -qq -y install apache2 php7.2 curl php7.2-cli php7.2-mysql php7.2-mcrypt php7.2-curl git gnupg php7.2-mbstring php7.2-xml unzip sudo curl php7.2-zip
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get -qq update && apt-get -qq -y install nodejs 
+RUN apt-get -qq -y install nodejs 
 
 RUN adduser local --disabled-password
 
