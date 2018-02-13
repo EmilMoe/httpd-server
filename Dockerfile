@@ -10,7 +10,7 @@ WORKDIR /tmp
 # RUN apt-get upgrade -y
 RUN apt-get -qq update && apt-get -qq -y upgrade
 
-RUN apt-get -qq update && apt-get -qq -y install apache2 php7.1 curl php7.1-cli php7.1-mysql php7.1-mcrypt php7.1-curl git gnupg php7.1-mbstring php7.1-xml unzip sudo curl php7.1-zip
+RUN apt-get -qq update && apt-get -qq -y install apache2 php7.0 curl php7.0-cli php7.0-mysql php7.0-mcrypt php7.0-curl git gnupg php7.0-mbstring php7.0-xml unzip sudo curl php7.0-zip
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get -qq update && apt-get -qq -y install nodejs 
 
