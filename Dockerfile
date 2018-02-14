@@ -44,7 +44,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 ### Setup site
 WORKDIR /var/www/html
-RUN git clone $REPO .
+RUN git clone ${REPO} .
 RUN cp .env.example .env
 RUN chown www-data:www-data .env
 RUN composer -n install
