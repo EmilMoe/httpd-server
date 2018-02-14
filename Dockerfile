@@ -3,8 +3,8 @@ FROM amd64/ubuntu:latest
 MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV SSHKEY $SSHKEY
-ENV REPO $REPO
+ARG SSHKEY
+ARG REPO
 
 WORKDIR /tmp
 
@@ -24,7 +24,7 @@ RUN apt-get -qq -y install libtool automake autoconf nasm libpng-dev make g++
 ### Make SSH
 RUN mkdir /root/.ssh/
 RUN ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
-RUN echo $SSHKEY | base64 --decode 2> nul > /root/.ssh/id_rsa
+RUN echo ${SSHKEY} | base64 --decode 2> nul > /root/.ssh/id_rsa
 
 ### Configure webserver
 RUN a2enmod rewrite
