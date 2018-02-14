@@ -30,7 +30,6 @@ RUN echo ${SSHKEY} | base64 --decode 2> nul > /root/.ssh/id_rsa
 RUN a2enmod rewrite
 
 RUN mkdir -p /var/www/html
-RUN rm /var/www/html/index.html
 RUN chown www-data:www-data /var/www/html
 
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
@@ -44,7 +43,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 ### Setup site
 WORKDIR /var/www/html
-RUN git clone ${REPO}
+RUN rm -f /var/www/html/*
+RUN git clone ${REPO} .
 RUN cp .env.production .env
 RUN chown www-data:www-data .env
 RUN composer -n install
