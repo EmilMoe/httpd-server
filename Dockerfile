@@ -40,9 +40,15 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php -r "unlink('composer-setup.php');" && \
     mv composer.phar /usr/sbin/composer
 
-VOLUME ["/var/www/html"]
-
+### Setup site
 WORKDIR /var/www/html
+RUN cp .env.example .env
+RUN composer -n install
+RUN artisan key:generate
+RUN php artisan migrate --seed
+
+### Finishing
+VOLUME ["/var/www/html"]
 
 EXPOSE 80
 
