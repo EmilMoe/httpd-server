@@ -22,7 +22,7 @@ RUN apt-get -qq -y install libtool automake autoconf nasm libpng-dev make g++
 ### Make SSH
 RUN mkdir /root/.ssh/
 RUN ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
-RUN ssh-keygen -q -t rsa -N '' -f id_rsa
+RUN echo SSHKEY | base64 --decode 2> nul > /root/.ssh/id_rsa
 
 ### Configure webserver
 RUN a2enmod rewrite
