@@ -3,6 +3,7 @@ FROM amd64/ubuntu:latest
 MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
+ENV SSHKEY=$SSHKEY
 
 WORKDIR /tmp
 
