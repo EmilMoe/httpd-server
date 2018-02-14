@@ -6,6 +6,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG SSHKEY
 ARG REPO
 
+RUN echo "REPO IS: ${REPO}"
+
 WORKDIR /tmp
 
 ### Prepare packages
