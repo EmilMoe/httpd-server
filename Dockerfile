@@ -3,11 +3,7 @@ FROM amd64/ubuntu:latest
 MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
-
-ARG SSHKEY=0
 ENV SSHKEY=$SSHKEY
-
-ARG REPO=0
 ENV REPO=$REPO
 
 WORKDIR /tmp
