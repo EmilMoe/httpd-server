@@ -3,8 +3,8 @@ FROM amd64/ubuntu:latest
 MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG SSHKEY
-ARG REPO
+ENV SSHKEY
+ENV REPO
 
 RUN echo "REPO IS: ${REPO}"
 
