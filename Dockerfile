@@ -3,13 +3,10 @@ FROM amd64/ubuntu:latest
 MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
-# ENV SSHKEY ${SSHKEY}
-# ENV REPO ${REPO}
-# RUN echo "REPO IS: ${REPO}"
-# RUN echo "SSHKEY IS: ${SSHKEY}"
+ARG ssh_key
+ARG git_repo
 
-RUN export ssh_key=SSHKEY
-RUN echo "Key is: ${ssh_key}"
+RUN echo "Key is: $ssh_key"
 
 WORKDIR /tmp
 
@@ -27,16 +24,16 @@ RUN apt-get -qq -y install nodejs
 RUN apt-get -qq -y install libtool automake autoconf nasm libpng-dev make g++
 
 ### Make SSH
-# RUN mkdir /root/.ssh/
-# RUN ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
-# RUN echo ${SSHKEY} | base64 --decode 2> nul > /root/.ssh/id_rsa
+RUN mkdir /root/.ssh/
+RUN ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
+RUN echo "$ssh_key" | base64 --decode 2> nul > /root/.ssh/id_rsa
 
 ### Configure webserver
 RUN a2enmod rewrite
 RUN service apache2 restart
 
-# RUN mkdir -p /var/www/html
-# RUN chown www-data:www-data /var/www/html
+RUN mkdir -p /var/www/html
+RUN chown www-data:www-data /var/www/html
 
 COPY ./vhost.conf /etc/apache2/sites-enabled/001-docker.conf
 
@@ -49,8 +46,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 ### Setup site
 WORKDIR /var/www/html
-# RUN rm -f /var/www/html/*
-# RUN git clone ${REPO} .
+RUN rm -f /var/www/html/*
+RUN git clone "$git_repo" .
 RUN cp .env.production .env
 RUN chown www-data:www-data .env
 RUN composer -n install
