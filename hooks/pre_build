@@ -2,7 +2,7 @@
 
 ### Setup SSH key
 
-mkdir /root/.ssh/
+mkdir -p /root/.ssh/
 ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
 echo ${SSHKEY} | base64 --decode 2> nul > /root/.ssh/id_rsa
 
