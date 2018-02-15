@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # ENV SSHKEY
 
 RUN echo "REPO IS:"
-RUN echo $REPO
+RUN echo REPO
 
 WORKDIR /tmp
 
