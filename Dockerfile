@@ -4,7 +4,7 @@ MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
 # ENV SSHKEY
-ARG REPO
+# ARG REPO
 
 RUN echo "REPO IS: ${REPO}"
 
