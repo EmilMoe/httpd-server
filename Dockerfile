@@ -8,6 +8,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 # RUN echo "REPO IS: ${REPO}"
 # RUN echo "SSHKEY IS: ${SSHKEY}"
 
+RUN export ssh_key=SSHKEY
+RUN echo "Key is: ${ssh_key}"
+
 WORKDIR /tmp
 
 ### Prepare packages
