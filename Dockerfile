@@ -30,6 +30,7 @@ RUN apt-get -qq -y install libtool automake autoconf nasm libpng-dev make g++
 
 ### Configure webserver
 RUN a2enmod rewrite
+RUN service apache2 restart
 
 # RUN mkdir -p /var/www/html
 # RUN chown www-data:www-data /var/www/html
