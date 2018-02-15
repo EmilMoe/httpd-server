@@ -3,12 +3,11 @@ FROM amd64/ubuntu:latest
 MAINTAINER Emil Moe
 
 ARG DEBIAN_FRONTEND=noninteractive
-# ARG SSHKEY
-# ARG REPO
+ENV SSHKEY ${SSHKEY}
+ENV REPO ${REPO}
 
 RUN echo "REPO IS: ${REPO}"
-RUN echo "REPO IS: $REPO"
-RUN echo REPO
+RUN echo "SSHKEY IS: ${SSHKEY}"
 
 WORKDIR /tmp
 
